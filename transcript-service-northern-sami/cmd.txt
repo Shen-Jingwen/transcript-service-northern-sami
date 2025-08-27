@@ -1,0 +1,37 @@
+python3 -m venv env_py38
+source env_py38/bin/activate
+deactivate
+conda remove --name live_speech_310 --all
+
+
+# 安装 Miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+
+
+# 打开 .bashrc 或 .zshrc 文件（根据你的 shell）
+nano ~/.bashrc
+# 在文件末尾添加以下内容（假设安装在默认路径）
+export PATH="$HOME/miniconda3/bin:$PATH"
+# 保存并退出（Ctrl+O, Enter, Ctrl+X）
+source ~/.bashrc
+
+conda --version
+which conda 
+
+
+conda install -c conda-forge spacy
+python -c "import spacy; print(spacy.__version__)"
+python -m spacy download en_core_web_sm
+
+conda install pytorch torchvision torchaudio -c pytorch
+
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+conda install cudatoolkit=12.1 -c conda-forge
+
+
+huggingface-cli login
+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
+
+transformers
+
